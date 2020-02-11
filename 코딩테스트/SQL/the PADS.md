@@ -12,7 +12,7 @@ where [occupation_count] is the number of occurrences of an occupation in OCCUPA
 
 Note: There will be at least two entries in the table for each type of occupation.
 
-## Query
+## Solution
 ```sql
 select concat(name,'(',substring(occupation,1,1),')')
 from OCCUPATIONS
