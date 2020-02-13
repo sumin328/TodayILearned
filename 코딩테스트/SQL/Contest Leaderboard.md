@@ -8,5 +8,16 @@ The total score of a hacker is the sum of their maximum scores for all of the ch
 
 ## Solution
 ```sql
-
+select s.hacker_id
+     , h.name
+     , sum(s.score) as sumofscore
+from hackers as h 
+join (select hacker_id
+           , max(score) as score
+      from submissions
+      group by hacker_id, challenge_id) as s
+on h.hacker_id = s.hacker_id
+group by s.hacker_id, h.name
+having sumofscore != 0
+order by sumofscore desc, s.hacker_id
 ```
